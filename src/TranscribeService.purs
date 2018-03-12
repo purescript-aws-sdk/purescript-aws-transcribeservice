@@ -20,22 +20,26 @@ import Data.StrMap as StrMap
 import AWS.Request as Request
 import AWS.Request.Types as Types
 
-serviceName = "TranscribeService" :: String
-
 
 -- | <p>Returns information about a transcription job. To see the status of the job, check the <code>Status</code> field. If the status is <code>COMPLETE</code>, the job is finished and you can find the results at the location specified in the <code>TranscriptionFileUri</code> field.</p>
 getTranscriptionJob :: forall eff. GetTranscriptionJobRequest -> Aff (exception :: EXCEPTION | eff) GetTranscriptionJobResponse
-getTranscriptionJob = Request.request serviceName "getTranscriptionJob" 
+getTranscriptionJob = Request.request service method  where
+    service = Request.ServiceName "TranscribeService"
+    method = Request.MethodName "getTranscriptionJob"
 
 
 -- | <p>Lists transcription jobs with the specified status.</p>
 listTranscriptionJobs :: forall eff. ListTranscriptionJobsRequest -> Aff (exception :: EXCEPTION | eff) ListTranscriptionJobsResponse
-listTranscriptionJobs = Request.request serviceName "listTranscriptionJobs" 
+listTranscriptionJobs = Request.request service method  where
+    service = Request.ServiceName "TranscribeService"
+    method = Request.MethodName "listTranscriptionJobs"
 
 
 -- | <p>Starts an asynchronous job to transcribe speech to text.</p>
 startTranscriptionJob :: forall eff. StartTranscriptionJobRequest -> Aff (exception :: EXCEPTION | eff) StartTranscriptionJobResponse
-startTranscriptionJob = Request.request serviceName "startTranscriptionJob" 
+startTranscriptionJob = Request.request service method  where
+    service = Request.ServiceName "TranscribeService"
+    method = Request.MethodName "startTranscriptionJob"
 
 
 -- | <p>There is a problem with one of the input fields. Check the S3 bucket name, make sure that the job name is not a duplicate, and confirm that you are using the correct file format. Then resend your request.</p>
