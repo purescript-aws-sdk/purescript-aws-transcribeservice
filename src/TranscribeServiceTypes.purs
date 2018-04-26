@@ -5,7 +5,6 @@ import Prelude
 import Data.Foreign.Class (class Decode, class Encode)
 import Data.Foreign.Generic (defaultOptions, genericDecode, genericEncode)
 import Data.Foreign.Generic.Types (Options)
-import Data.Foreign.NullOrUndefined (NullOrUndefined(..))
 import Data.Generic.Rep (class Generic)
 import Data.Generic.Rep.Show (genericShow)
 import Data.Maybe (Maybe(..))
@@ -20,7 +19,7 @@ options = defaultOptions { unwrapSingleConstructors = true }
 
 -- | <p>There is a problem with one of the input fields. Check the S3 bucket name, make sure that the job name is not a duplicate, and confirm that you are using the correct file format. Then resend your request.</p>
 newtype BadRequestException = BadRequestException 
-  { "Message" :: NullOrUndefined (FailureReason)
+  { "Message" :: Maybe (FailureReason)
   }
 derive instance newtypeBadRequestException :: Newtype BadRequestException _
 derive instance repGenericBadRequestException :: Generic BadRequestException _
@@ -30,18 +29,18 @@ instance encodeBadRequestException :: Encode BadRequestException where encode = 
 
 -- | Constructs BadRequestException from required parameters
 newBadRequestException :: BadRequestException
-newBadRequestException  = BadRequestException { "Message": (NullOrUndefined Nothing) }
+newBadRequestException  = BadRequestException { "Message": Nothing }
 
 -- | Constructs BadRequestException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newBadRequestException' :: ( { "Message" :: NullOrUndefined (FailureReason) } -> {"Message" :: NullOrUndefined (FailureReason) } ) -> BadRequestException
-newBadRequestException'  customize = (BadRequestException <<< customize) { "Message": (NullOrUndefined Nothing) }
+newBadRequestException' :: ( { "Message" :: Maybe (FailureReason) } -> {"Message" :: Maybe (FailureReason) } ) -> BadRequestException
+newBadRequestException'  customize = (BadRequestException <<< customize) { "Message": Nothing }
 
 
 
 -- | <p>The <code>JobName</code> field is a duplicate of a previously entered job name. Resend your request with a different name.</p>
 newtype ConflictException = ConflictException 
-  { "Message" :: NullOrUndefined (String)
+  { "Message" :: Maybe (String)
   }
 derive instance newtypeConflictException :: Newtype ConflictException _
 derive instance repGenericConflictException :: Generic ConflictException _
@@ -51,12 +50,12 @@ instance encodeConflictException :: Encode ConflictException where encode = gene
 
 -- | Constructs ConflictException from required parameters
 newConflictException :: ConflictException
-newConflictException  = ConflictException { "Message": (NullOrUndefined Nothing) }
+newConflictException  = ConflictException { "Message": Nothing }
 
 -- | Constructs ConflictException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newConflictException' :: ( { "Message" :: NullOrUndefined (String) } -> {"Message" :: NullOrUndefined (String) } ) -> ConflictException
-newConflictException'  customize = (ConflictException <<< customize) { "Message": (NullOrUndefined Nothing) }
+newConflictException' :: ( { "Message" :: Maybe (String) } -> {"Message" :: Maybe (String) } ) -> ConflictException
+newConflictException'  customize = (ConflictException <<< customize) { "Message": Nothing }
 
 
 
@@ -99,7 +98,7 @@ newGetTranscriptionJobRequest' _TranscriptionJobName customize = (GetTranscripti
 
 
 newtype GetTranscriptionJobResponse = GetTranscriptionJobResponse 
-  { "TranscriptionJob" :: NullOrUndefined (TranscriptionJob)
+  { "TranscriptionJob" :: Maybe (TranscriptionJob)
   }
 derive instance newtypeGetTranscriptionJobResponse :: Newtype GetTranscriptionJobResponse _
 derive instance repGenericGetTranscriptionJobResponse :: Generic GetTranscriptionJobResponse _
@@ -109,18 +108,18 @@ instance encodeGetTranscriptionJobResponse :: Encode GetTranscriptionJobResponse
 
 -- | Constructs GetTranscriptionJobResponse from required parameters
 newGetTranscriptionJobResponse :: GetTranscriptionJobResponse
-newGetTranscriptionJobResponse  = GetTranscriptionJobResponse { "TranscriptionJob": (NullOrUndefined Nothing) }
+newGetTranscriptionJobResponse  = GetTranscriptionJobResponse { "TranscriptionJob": Nothing }
 
 -- | Constructs GetTranscriptionJobResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newGetTranscriptionJobResponse' :: ( { "TranscriptionJob" :: NullOrUndefined (TranscriptionJob) } -> {"TranscriptionJob" :: NullOrUndefined (TranscriptionJob) } ) -> GetTranscriptionJobResponse
-newGetTranscriptionJobResponse'  customize = (GetTranscriptionJobResponse <<< customize) { "TranscriptionJob": (NullOrUndefined Nothing) }
+newGetTranscriptionJobResponse' :: ( { "TranscriptionJob" :: Maybe (TranscriptionJob) } -> {"TranscriptionJob" :: Maybe (TranscriptionJob) } ) -> GetTranscriptionJobResponse
+newGetTranscriptionJobResponse'  customize = (GetTranscriptionJobResponse <<< customize) { "TranscriptionJob": Nothing }
 
 
 
 -- | <p>There was an internal error. Check the error message and try your request again.</p>
 newtype InternalFailureException = InternalFailureException 
-  { "Message" :: NullOrUndefined (String)
+  { "Message" :: Maybe (String)
   }
 derive instance newtypeInternalFailureException :: Newtype InternalFailureException _
 derive instance repGenericInternalFailureException :: Generic InternalFailureException _
@@ -130,12 +129,12 @@ instance encodeInternalFailureException :: Encode InternalFailureException where
 
 -- | Constructs InternalFailureException from required parameters
 newInternalFailureException :: InternalFailureException
-newInternalFailureException  = InternalFailureException { "Message": (NullOrUndefined Nothing) }
+newInternalFailureException  = InternalFailureException { "Message": Nothing }
 
 -- | Constructs InternalFailureException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newInternalFailureException' :: ( { "Message" :: NullOrUndefined (String) } -> {"Message" :: NullOrUndefined (String) } ) -> InternalFailureException
-newInternalFailureException'  customize = (InternalFailureException <<< customize) { "Message": (NullOrUndefined Nothing) }
+newInternalFailureException' :: ( { "Message" :: Maybe (String) } -> {"Message" :: Maybe (String) } ) -> InternalFailureException
+newInternalFailureException'  customize = (InternalFailureException <<< customize) { "Message": Nothing }
 
 
 
@@ -150,7 +149,7 @@ instance encodeLanguageCode :: Encode LanguageCode where encode = genericEncode 
 
 -- | <p>Either you have sent too many requests or your input file is longer than 2 hours. Wait before you resend your request, or use a smaller file and resend the request.</p>
 newtype LimitExceededException = LimitExceededException 
-  { "Message" :: NullOrUndefined (String)
+  { "Message" :: Maybe (String)
   }
 derive instance newtypeLimitExceededException :: Newtype LimitExceededException _
 derive instance repGenericLimitExceededException :: Generic LimitExceededException _
@@ -160,19 +159,19 @@ instance encodeLimitExceededException :: Encode LimitExceededException where enc
 
 -- | Constructs LimitExceededException from required parameters
 newLimitExceededException :: LimitExceededException
-newLimitExceededException  = LimitExceededException { "Message": (NullOrUndefined Nothing) }
+newLimitExceededException  = LimitExceededException { "Message": Nothing }
 
 -- | Constructs LimitExceededException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newLimitExceededException' :: ( { "Message" :: NullOrUndefined (String) } -> {"Message" :: NullOrUndefined (String) } ) -> LimitExceededException
-newLimitExceededException'  customize = (LimitExceededException <<< customize) { "Message": (NullOrUndefined Nothing) }
+newLimitExceededException' :: ( { "Message" :: Maybe (String) } -> {"Message" :: Maybe (String) } ) -> LimitExceededException
+newLimitExceededException'  customize = (LimitExceededException <<< customize) { "Message": Nothing }
 
 
 
 newtype ListTranscriptionJobsRequest = ListTranscriptionJobsRequest 
   { "Status" :: (TranscriptionJobStatus)
-  , "NextToken" :: NullOrUndefined (NextToken)
-  , "MaxResults" :: NullOrUndefined (MaxResults)
+  , "NextToken" :: Maybe (NextToken)
+  , "MaxResults" :: Maybe (MaxResults)
   }
 derive instance newtypeListTranscriptionJobsRequest :: Newtype ListTranscriptionJobsRequest _
 derive instance repGenericListTranscriptionJobsRequest :: Generic ListTranscriptionJobsRequest _
@@ -182,19 +181,19 @@ instance encodeListTranscriptionJobsRequest :: Encode ListTranscriptionJobsReque
 
 -- | Constructs ListTranscriptionJobsRequest from required parameters
 newListTranscriptionJobsRequest :: TranscriptionJobStatus -> ListTranscriptionJobsRequest
-newListTranscriptionJobsRequest _Status = ListTranscriptionJobsRequest { "Status": _Status, "MaxResults": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newListTranscriptionJobsRequest _Status = ListTranscriptionJobsRequest { "Status": _Status, "MaxResults": Nothing, "NextToken": Nothing }
 
 -- | Constructs ListTranscriptionJobsRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newListTranscriptionJobsRequest' :: TranscriptionJobStatus -> ( { "Status" :: (TranscriptionJobStatus) , "NextToken" :: NullOrUndefined (NextToken) , "MaxResults" :: NullOrUndefined (MaxResults) } -> {"Status" :: (TranscriptionJobStatus) , "NextToken" :: NullOrUndefined (NextToken) , "MaxResults" :: NullOrUndefined (MaxResults) } ) -> ListTranscriptionJobsRequest
-newListTranscriptionJobsRequest' _Status customize = (ListTranscriptionJobsRequest <<< customize) { "Status": _Status, "MaxResults": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newListTranscriptionJobsRequest' :: TranscriptionJobStatus -> ( { "Status" :: (TranscriptionJobStatus) , "NextToken" :: Maybe (NextToken) , "MaxResults" :: Maybe (MaxResults) } -> {"Status" :: (TranscriptionJobStatus) , "NextToken" :: Maybe (NextToken) , "MaxResults" :: Maybe (MaxResults) } ) -> ListTranscriptionJobsRequest
+newListTranscriptionJobsRequest' _Status customize = (ListTranscriptionJobsRequest <<< customize) { "Status": _Status, "MaxResults": Nothing, "NextToken": Nothing }
 
 
 
 newtype ListTranscriptionJobsResponse = ListTranscriptionJobsResponse 
-  { "Status" :: NullOrUndefined (TranscriptionJobStatus)
-  , "NextToken" :: NullOrUndefined (NextToken)
-  , "TranscriptionJobSummaries" :: NullOrUndefined (TranscriptionJobSummaries)
+  { "Status" :: Maybe (TranscriptionJobStatus)
+  , "NextToken" :: Maybe (NextToken)
+  , "TranscriptionJobSummaries" :: Maybe (TranscriptionJobSummaries)
   }
 derive instance newtypeListTranscriptionJobsResponse :: Newtype ListTranscriptionJobsResponse _
 derive instance repGenericListTranscriptionJobsResponse :: Generic ListTranscriptionJobsResponse _
@@ -204,12 +203,12 @@ instance encodeListTranscriptionJobsResponse :: Encode ListTranscriptionJobsResp
 
 -- | Constructs ListTranscriptionJobsResponse from required parameters
 newListTranscriptionJobsResponse :: ListTranscriptionJobsResponse
-newListTranscriptionJobsResponse  = ListTranscriptionJobsResponse { "NextToken": (NullOrUndefined Nothing), "Status": (NullOrUndefined Nothing), "TranscriptionJobSummaries": (NullOrUndefined Nothing) }
+newListTranscriptionJobsResponse  = ListTranscriptionJobsResponse { "NextToken": Nothing, "Status": Nothing, "TranscriptionJobSummaries": Nothing }
 
 -- | Constructs ListTranscriptionJobsResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newListTranscriptionJobsResponse' :: ( { "Status" :: NullOrUndefined (TranscriptionJobStatus) , "NextToken" :: NullOrUndefined (NextToken) , "TranscriptionJobSummaries" :: NullOrUndefined (TranscriptionJobSummaries) } -> {"Status" :: NullOrUndefined (TranscriptionJobStatus) , "NextToken" :: NullOrUndefined (NextToken) , "TranscriptionJobSummaries" :: NullOrUndefined (TranscriptionJobSummaries) } ) -> ListTranscriptionJobsResponse
-newListTranscriptionJobsResponse'  customize = (ListTranscriptionJobsResponse <<< customize) { "NextToken": (NullOrUndefined Nothing), "Status": (NullOrUndefined Nothing), "TranscriptionJobSummaries": (NullOrUndefined Nothing) }
+newListTranscriptionJobsResponse' :: ( { "Status" :: Maybe (TranscriptionJobStatus) , "NextToken" :: Maybe (NextToken) , "TranscriptionJobSummaries" :: Maybe (TranscriptionJobSummaries) } -> {"Status" :: Maybe (TranscriptionJobStatus) , "NextToken" :: Maybe (NextToken) , "TranscriptionJobSummaries" :: Maybe (TranscriptionJobSummaries) } ) -> ListTranscriptionJobsResponse
+newListTranscriptionJobsResponse'  customize = (ListTranscriptionJobsResponse <<< customize) { "NextToken": Nothing, "Status": Nothing, "TranscriptionJobSummaries": Nothing }
 
 
 
@@ -224,7 +223,7 @@ instance encodeMaxResults :: Encode MaxResults where encode = genericEncode opti
 
 -- | <p>Describes the input media file in a transcription request.</p>
 newtype Media = Media 
-  { "MediaFileUri" :: NullOrUndefined (Uri)
+  { "MediaFileUri" :: Maybe (Uri)
   }
 derive instance newtypeMedia :: Newtype Media _
 derive instance repGenericMedia :: Generic Media _
@@ -234,12 +233,12 @@ instance encodeMedia :: Encode Media where encode = genericEncode options
 
 -- | Constructs Media from required parameters
 newMedia :: Media
-newMedia  = Media { "MediaFileUri": (NullOrUndefined Nothing) }
+newMedia  = Media { "MediaFileUri": Nothing }
 
 -- | Constructs Media's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newMedia' :: ( { "MediaFileUri" :: NullOrUndefined (Uri) } -> {"MediaFileUri" :: NullOrUndefined (Uri) } ) -> Media
-newMedia'  customize = (Media <<< customize) { "MediaFileUri": (NullOrUndefined Nothing) }
+newMedia' :: ( { "MediaFileUri" :: Maybe (Uri) } -> {"MediaFileUri" :: Maybe (Uri) } ) -> Media
+newMedia'  customize = (Media <<< customize) { "MediaFileUri": Nothing }
 
 
 
@@ -272,7 +271,7 @@ instance encodeNextToken :: Encode NextToken where encode = genericEncode option
 
 -- | <p>We can't find the requested job. Check the job name and try your request again.</p>
 newtype NotFoundException = NotFoundException 
-  { "Message" :: NullOrUndefined (String)
+  { "Message" :: Maybe (String)
   }
 derive instance newtypeNotFoundException :: Newtype NotFoundException _
 derive instance repGenericNotFoundException :: Generic NotFoundException _
@@ -282,19 +281,19 @@ instance encodeNotFoundException :: Encode NotFoundException where encode = gene
 
 -- | Constructs NotFoundException from required parameters
 newNotFoundException :: NotFoundException
-newNotFoundException  = NotFoundException { "Message": (NullOrUndefined Nothing) }
+newNotFoundException  = NotFoundException { "Message": Nothing }
 
 -- | Constructs NotFoundException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newNotFoundException' :: ( { "Message" :: NullOrUndefined (String) } -> {"Message" :: NullOrUndefined (String) } ) -> NotFoundException
-newNotFoundException'  customize = (NotFoundException <<< customize) { "Message": (NullOrUndefined Nothing) }
+newNotFoundException' :: ( { "Message" :: Maybe (String) } -> {"Message" :: Maybe (String) } ) -> NotFoundException
+newNotFoundException'  customize = (NotFoundException <<< customize) { "Message": Nothing }
 
 
 
 newtype StartTranscriptionJobRequest = StartTranscriptionJobRequest 
   { "TranscriptionJobName" :: (TranscriptionJobName)
   , "LanguageCode" :: (LanguageCode)
-  , "MediaSampleRateHertz" :: NullOrUndefined (MediaSampleRateHertz)
+  , "MediaSampleRateHertz" :: Maybe (MediaSampleRateHertz)
   , "MediaFormat" :: (MediaFormat)
   , "Media" :: (Media)
   }
@@ -306,17 +305,17 @@ instance encodeStartTranscriptionJobRequest :: Encode StartTranscriptionJobReque
 
 -- | Constructs StartTranscriptionJobRequest from required parameters
 newStartTranscriptionJobRequest :: LanguageCode -> Media -> MediaFormat -> TranscriptionJobName -> StartTranscriptionJobRequest
-newStartTranscriptionJobRequest _LanguageCode _Media _MediaFormat _TranscriptionJobName = StartTranscriptionJobRequest { "LanguageCode": _LanguageCode, "Media": _Media, "MediaFormat": _MediaFormat, "TranscriptionJobName": _TranscriptionJobName, "MediaSampleRateHertz": (NullOrUndefined Nothing) }
+newStartTranscriptionJobRequest _LanguageCode _Media _MediaFormat _TranscriptionJobName = StartTranscriptionJobRequest { "LanguageCode": _LanguageCode, "Media": _Media, "MediaFormat": _MediaFormat, "TranscriptionJobName": _TranscriptionJobName, "MediaSampleRateHertz": Nothing }
 
 -- | Constructs StartTranscriptionJobRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newStartTranscriptionJobRequest' :: LanguageCode -> Media -> MediaFormat -> TranscriptionJobName -> ( { "TranscriptionJobName" :: (TranscriptionJobName) , "LanguageCode" :: (LanguageCode) , "MediaSampleRateHertz" :: NullOrUndefined (MediaSampleRateHertz) , "MediaFormat" :: (MediaFormat) , "Media" :: (Media) } -> {"TranscriptionJobName" :: (TranscriptionJobName) , "LanguageCode" :: (LanguageCode) , "MediaSampleRateHertz" :: NullOrUndefined (MediaSampleRateHertz) , "MediaFormat" :: (MediaFormat) , "Media" :: (Media) } ) -> StartTranscriptionJobRequest
-newStartTranscriptionJobRequest' _LanguageCode _Media _MediaFormat _TranscriptionJobName customize = (StartTranscriptionJobRequest <<< customize) { "LanguageCode": _LanguageCode, "Media": _Media, "MediaFormat": _MediaFormat, "TranscriptionJobName": _TranscriptionJobName, "MediaSampleRateHertz": (NullOrUndefined Nothing) }
+newStartTranscriptionJobRequest' :: LanguageCode -> Media -> MediaFormat -> TranscriptionJobName -> ( { "TranscriptionJobName" :: (TranscriptionJobName) , "LanguageCode" :: (LanguageCode) , "MediaSampleRateHertz" :: Maybe (MediaSampleRateHertz) , "MediaFormat" :: (MediaFormat) , "Media" :: (Media) } -> {"TranscriptionJobName" :: (TranscriptionJobName) , "LanguageCode" :: (LanguageCode) , "MediaSampleRateHertz" :: Maybe (MediaSampleRateHertz) , "MediaFormat" :: (MediaFormat) , "Media" :: (Media) } ) -> StartTranscriptionJobRequest
+newStartTranscriptionJobRequest' _LanguageCode _Media _MediaFormat _TranscriptionJobName customize = (StartTranscriptionJobRequest <<< customize) { "LanguageCode": _LanguageCode, "Media": _Media, "MediaFormat": _MediaFormat, "TranscriptionJobName": _TranscriptionJobName, "MediaSampleRateHertz": Nothing }
 
 
 
 newtype StartTranscriptionJobResponse = StartTranscriptionJobResponse 
-  { "TranscriptionJob" :: NullOrUndefined (TranscriptionJob)
+  { "TranscriptionJob" :: Maybe (TranscriptionJob)
   }
 derive instance newtypeStartTranscriptionJobResponse :: Newtype StartTranscriptionJobResponse _
 derive instance repGenericStartTranscriptionJobResponse :: Generic StartTranscriptionJobResponse _
@@ -326,18 +325,18 @@ instance encodeStartTranscriptionJobResponse :: Encode StartTranscriptionJobResp
 
 -- | Constructs StartTranscriptionJobResponse from required parameters
 newStartTranscriptionJobResponse :: StartTranscriptionJobResponse
-newStartTranscriptionJobResponse  = StartTranscriptionJobResponse { "TranscriptionJob": (NullOrUndefined Nothing) }
+newStartTranscriptionJobResponse  = StartTranscriptionJobResponse { "TranscriptionJob": Nothing }
 
 -- | Constructs StartTranscriptionJobResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newStartTranscriptionJobResponse' :: ( { "TranscriptionJob" :: NullOrUndefined (TranscriptionJob) } -> {"TranscriptionJob" :: NullOrUndefined (TranscriptionJob) } ) -> StartTranscriptionJobResponse
-newStartTranscriptionJobResponse'  customize = (StartTranscriptionJobResponse <<< customize) { "TranscriptionJob": (NullOrUndefined Nothing) }
+newStartTranscriptionJobResponse' :: ( { "TranscriptionJob" :: Maybe (TranscriptionJob) } -> {"TranscriptionJob" :: Maybe (TranscriptionJob) } ) -> StartTranscriptionJobResponse
+newStartTranscriptionJobResponse'  customize = (StartTranscriptionJobResponse <<< customize) { "TranscriptionJob": Nothing }
 
 
 
 -- | <p>Describes the output of a transcription job.</p>
 newtype Transcript = Transcript 
-  { "TranscriptFileUri" :: NullOrUndefined (Uri)
+  { "TranscriptFileUri" :: Maybe (Uri)
   }
 derive instance newtypeTranscript :: Newtype Transcript _
 derive instance repGenericTranscript :: Generic Transcript _
@@ -347,27 +346,27 @@ instance encodeTranscript :: Encode Transcript where encode = genericEncode opti
 
 -- | Constructs Transcript from required parameters
 newTranscript :: Transcript
-newTranscript  = Transcript { "TranscriptFileUri": (NullOrUndefined Nothing) }
+newTranscript  = Transcript { "TranscriptFileUri": Nothing }
 
 -- | Constructs Transcript's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newTranscript' :: ( { "TranscriptFileUri" :: NullOrUndefined (Uri) } -> {"TranscriptFileUri" :: NullOrUndefined (Uri) } ) -> Transcript
-newTranscript'  customize = (Transcript <<< customize) { "TranscriptFileUri": (NullOrUndefined Nothing) }
+newTranscript' :: ( { "TranscriptFileUri" :: Maybe (Uri) } -> {"TranscriptFileUri" :: Maybe (Uri) } ) -> Transcript
+newTranscript'  customize = (Transcript <<< customize) { "TranscriptFileUri": Nothing }
 
 
 
 -- | <p>Describes an asynchronous transcription job that was created with the <code>StartTranscriptionJob</code> operation.</p>
 newtype TranscriptionJob = TranscriptionJob 
-  { "TranscriptionJobName" :: NullOrUndefined (TranscriptionJobName)
-  , "TranscriptionJobStatus" :: NullOrUndefined (TranscriptionJobStatus)
-  , "LanguageCode" :: NullOrUndefined (LanguageCode)
-  , "MediaSampleRateHertz" :: NullOrUndefined (MediaSampleRateHertz)
-  , "MediaFormat" :: NullOrUndefined (MediaFormat)
-  , "Media" :: NullOrUndefined (Media)
-  , "Transcript" :: NullOrUndefined (Transcript)
-  , "CreationTime" :: NullOrUndefined (DateTime)
-  , "CompletionTime" :: NullOrUndefined (DateTime)
-  , "FailureReason" :: NullOrUndefined (FailureReason)
+  { "TranscriptionJobName" :: Maybe (TranscriptionJobName)
+  , "TranscriptionJobStatus" :: Maybe (TranscriptionJobStatus)
+  , "LanguageCode" :: Maybe (LanguageCode)
+  , "MediaSampleRateHertz" :: Maybe (MediaSampleRateHertz)
+  , "MediaFormat" :: Maybe (MediaFormat)
+  , "Media" :: Maybe (Media)
+  , "Transcript" :: Maybe (Transcript)
+  , "CreationTime" :: Maybe (DateTime)
+  , "CompletionTime" :: Maybe (DateTime)
+  , "FailureReason" :: Maybe (FailureReason)
   }
 derive instance newtypeTranscriptionJob :: Newtype TranscriptionJob _
 derive instance repGenericTranscriptionJob :: Generic TranscriptionJob _
@@ -377,12 +376,12 @@ instance encodeTranscriptionJob :: Encode TranscriptionJob where encode = generi
 
 -- | Constructs TranscriptionJob from required parameters
 newTranscriptionJob :: TranscriptionJob
-newTranscriptionJob  = TranscriptionJob { "CompletionTime": (NullOrUndefined Nothing), "CreationTime": (NullOrUndefined Nothing), "FailureReason": (NullOrUndefined Nothing), "LanguageCode": (NullOrUndefined Nothing), "Media": (NullOrUndefined Nothing), "MediaFormat": (NullOrUndefined Nothing), "MediaSampleRateHertz": (NullOrUndefined Nothing), "Transcript": (NullOrUndefined Nothing), "TranscriptionJobName": (NullOrUndefined Nothing), "TranscriptionJobStatus": (NullOrUndefined Nothing) }
+newTranscriptionJob  = TranscriptionJob { "CompletionTime": Nothing, "CreationTime": Nothing, "FailureReason": Nothing, "LanguageCode": Nothing, "Media": Nothing, "MediaFormat": Nothing, "MediaSampleRateHertz": Nothing, "Transcript": Nothing, "TranscriptionJobName": Nothing, "TranscriptionJobStatus": Nothing }
 
 -- | Constructs TranscriptionJob's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newTranscriptionJob' :: ( { "TranscriptionJobName" :: NullOrUndefined (TranscriptionJobName) , "TranscriptionJobStatus" :: NullOrUndefined (TranscriptionJobStatus) , "LanguageCode" :: NullOrUndefined (LanguageCode) , "MediaSampleRateHertz" :: NullOrUndefined (MediaSampleRateHertz) , "MediaFormat" :: NullOrUndefined (MediaFormat) , "Media" :: NullOrUndefined (Media) , "Transcript" :: NullOrUndefined (Transcript) , "CreationTime" :: NullOrUndefined (DateTime) , "CompletionTime" :: NullOrUndefined (DateTime) , "FailureReason" :: NullOrUndefined (FailureReason) } -> {"TranscriptionJobName" :: NullOrUndefined (TranscriptionJobName) , "TranscriptionJobStatus" :: NullOrUndefined (TranscriptionJobStatus) , "LanguageCode" :: NullOrUndefined (LanguageCode) , "MediaSampleRateHertz" :: NullOrUndefined (MediaSampleRateHertz) , "MediaFormat" :: NullOrUndefined (MediaFormat) , "Media" :: NullOrUndefined (Media) , "Transcript" :: NullOrUndefined (Transcript) , "CreationTime" :: NullOrUndefined (DateTime) , "CompletionTime" :: NullOrUndefined (DateTime) , "FailureReason" :: NullOrUndefined (FailureReason) } ) -> TranscriptionJob
-newTranscriptionJob'  customize = (TranscriptionJob <<< customize) { "CompletionTime": (NullOrUndefined Nothing), "CreationTime": (NullOrUndefined Nothing), "FailureReason": (NullOrUndefined Nothing), "LanguageCode": (NullOrUndefined Nothing), "Media": (NullOrUndefined Nothing), "MediaFormat": (NullOrUndefined Nothing), "MediaSampleRateHertz": (NullOrUndefined Nothing), "Transcript": (NullOrUndefined Nothing), "TranscriptionJobName": (NullOrUndefined Nothing), "TranscriptionJobStatus": (NullOrUndefined Nothing) }
+newTranscriptionJob' :: ( { "TranscriptionJobName" :: Maybe (TranscriptionJobName) , "TranscriptionJobStatus" :: Maybe (TranscriptionJobStatus) , "LanguageCode" :: Maybe (LanguageCode) , "MediaSampleRateHertz" :: Maybe (MediaSampleRateHertz) , "MediaFormat" :: Maybe (MediaFormat) , "Media" :: Maybe (Media) , "Transcript" :: Maybe (Transcript) , "CreationTime" :: Maybe (DateTime) , "CompletionTime" :: Maybe (DateTime) , "FailureReason" :: Maybe (FailureReason) } -> {"TranscriptionJobName" :: Maybe (TranscriptionJobName) , "TranscriptionJobStatus" :: Maybe (TranscriptionJobStatus) , "LanguageCode" :: Maybe (LanguageCode) , "MediaSampleRateHertz" :: Maybe (MediaSampleRateHertz) , "MediaFormat" :: Maybe (MediaFormat) , "Media" :: Maybe (Media) , "Transcript" :: Maybe (Transcript) , "CreationTime" :: Maybe (DateTime) , "CompletionTime" :: Maybe (DateTime) , "FailureReason" :: Maybe (FailureReason) } ) -> TranscriptionJob
+newTranscriptionJob'  customize = (TranscriptionJob <<< customize) { "CompletionTime": Nothing, "CreationTime": Nothing, "FailureReason": Nothing, "LanguageCode": Nothing, "Media": Nothing, "MediaFormat": Nothing, "MediaSampleRateHertz": Nothing, "Transcript": Nothing, "TranscriptionJobName": Nothing, "TranscriptionJobStatus": Nothing }
 
 
 
@@ -415,12 +414,12 @@ instance encodeTranscriptionJobSummaries :: Encode TranscriptionJobSummaries whe
 
 -- | <p>Provides a summary of information about a transcription job.</p>
 newtype TranscriptionJobSummary = TranscriptionJobSummary 
-  { "TranscriptionJobName" :: NullOrUndefined (TranscriptionJobName)
-  , "CreationTime" :: NullOrUndefined (DateTime)
-  , "CompletionTime" :: NullOrUndefined (DateTime)
-  , "LanguageCode" :: NullOrUndefined (LanguageCode)
-  , "TranscriptionJobStatus" :: NullOrUndefined (TranscriptionJobStatus)
-  , "FailureReason" :: NullOrUndefined (FailureReason)
+  { "TranscriptionJobName" :: Maybe (TranscriptionJobName)
+  , "CreationTime" :: Maybe (DateTime)
+  , "CompletionTime" :: Maybe (DateTime)
+  , "LanguageCode" :: Maybe (LanguageCode)
+  , "TranscriptionJobStatus" :: Maybe (TranscriptionJobStatus)
+  , "FailureReason" :: Maybe (FailureReason)
   }
 derive instance newtypeTranscriptionJobSummary :: Newtype TranscriptionJobSummary _
 derive instance repGenericTranscriptionJobSummary :: Generic TranscriptionJobSummary _
@@ -430,12 +429,12 @@ instance encodeTranscriptionJobSummary :: Encode TranscriptionJobSummary where e
 
 -- | Constructs TranscriptionJobSummary from required parameters
 newTranscriptionJobSummary :: TranscriptionJobSummary
-newTranscriptionJobSummary  = TranscriptionJobSummary { "CompletionTime": (NullOrUndefined Nothing), "CreationTime": (NullOrUndefined Nothing), "FailureReason": (NullOrUndefined Nothing), "LanguageCode": (NullOrUndefined Nothing), "TranscriptionJobName": (NullOrUndefined Nothing), "TranscriptionJobStatus": (NullOrUndefined Nothing) }
+newTranscriptionJobSummary  = TranscriptionJobSummary { "CompletionTime": Nothing, "CreationTime": Nothing, "FailureReason": Nothing, "LanguageCode": Nothing, "TranscriptionJobName": Nothing, "TranscriptionJobStatus": Nothing }
 
 -- | Constructs TranscriptionJobSummary's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newTranscriptionJobSummary' :: ( { "TranscriptionJobName" :: NullOrUndefined (TranscriptionJobName) , "CreationTime" :: NullOrUndefined (DateTime) , "CompletionTime" :: NullOrUndefined (DateTime) , "LanguageCode" :: NullOrUndefined (LanguageCode) , "TranscriptionJobStatus" :: NullOrUndefined (TranscriptionJobStatus) , "FailureReason" :: NullOrUndefined (FailureReason) } -> {"TranscriptionJobName" :: NullOrUndefined (TranscriptionJobName) , "CreationTime" :: NullOrUndefined (DateTime) , "CompletionTime" :: NullOrUndefined (DateTime) , "LanguageCode" :: NullOrUndefined (LanguageCode) , "TranscriptionJobStatus" :: NullOrUndefined (TranscriptionJobStatus) , "FailureReason" :: NullOrUndefined (FailureReason) } ) -> TranscriptionJobSummary
-newTranscriptionJobSummary'  customize = (TranscriptionJobSummary <<< customize) { "CompletionTime": (NullOrUndefined Nothing), "CreationTime": (NullOrUndefined Nothing), "FailureReason": (NullOrUndefined Nothing), "LanguageCode": (NullOrUndefined Nothing), "TranscriptionJobName": (NullOrUndefined Nothing), "TranscriptionJobStatus": (NullOrUndefined Nothing) }
+newTranscriptionJobSummary' :: ( { "TranscriptionJobName" :: Maybe (TranscriptionJobName) , "CreationTime" :: Maybe (DateTime) , "CompletionTime" :: Maybe (DateTime) , "LanguageCode" :: Maybe (LanguageCode) , "TranscriptionJobStatus" :: Maybe (TranscriptionJobStatus) , "FailureReason" :: Maybe (FailureReason) } -> {"TranscriptionJobName" :: Maybe (TranscriptionJobName) , "CreationTime" :: Maybe (DateTime) , "CompletionTime" :: Maybe (DateTime) , "LanguageCode" :: Maybe (LanguageCode) , "TranscriptionJobStatus" :: Maybe (TranscriptionJobStatus) , "FailureReason" :: Maybe (FailureReason) } ) -> TranscriptionJobSummary
+newTranscriptionJobSummary'  customize = (TranscriptionJobSummary <<< customize) { "CompletionTime": Nothing, "CreationTime": Nothing, "FailureReason": Nothing, "LanguageCode": Nothing, "TranscriptionJobName": Nothing, "TranscriptionJobStatus": Nothing }
 
 
 

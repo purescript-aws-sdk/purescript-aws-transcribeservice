@@ -10,7 +10,7 @@ options :: Options
 
 ``` purescript
 newtype BadRequestException
-  = BadRequestException { "Message" :: NullOrUndefined (FailureReason) }
+  = BadRequestException { "Message" :: Maybe (FailureReason) }
 ```
 
 <p>There is a problem with one of the input fields. Check the S3 bucket name, make sure that the job name is not a duplicate, and confirm that you are using the correct file format. Then resend your request.</p>
@@ -35,7 +35,7 @@ Constructs BadRequestException from required parameters
 #### `newBadRequestException'`
 
 ``` purescript
-newBadRequestException' :: ({ "Message" :: NullOrUndefined (FailureReason) } -> { "Message" :: NullOrUndefined (FailureReason) }) -> BadRequestException
+newBadRequestException' :: ({ "Message" :: Maybe (FailureReason) } -> { "Message" :: Maybe (FailureReason) }) -> BadRequestException
 ```
 
 Constructs BadRequestException's fields from required parameters
@@ -44,7 +44,7 @@ Constructs BadRequestException's fields from required parameters
 
 ``` purescript
 newtype ConflictException
-  = ConflictException { "Message" :: NullOrUndefined (String) }
+  = ConflictException { "Message" :: Maybe (String) }
 ```
 
 <p>The <code>JobName</code> field is a duplicate of a previously entered job name. Resend your request with a different name.</p>
@@ -69,7 +69,7 @@ Constructs ConflictException from required parameters
 #### `newConflictException'`
 
 ``` purescript
-newConflictException' :: ({ "Message" :: NullOrUndefined (String) } -> { "Message" :: NullOrUndefined (String) }) -> ConflictException
+newConflictException' :: ({ "Message" :: Maybe (String) } -> { "Message" :: Maybe (String) }) -> ConflictException
 ```
 
 Constructs ConflictException's fields from required parameters
@@ -142,7 +142,7 @@ Constructs GetTranscriptionJobRequest's fields from required parameters
 
 ``` purescript
 newtype GetTranscriptionJobResponse
-  = GetTranscriptionJobResponse { "TranscriptionJob" :: NullOrUndefined (TranscriptionJob) }
+  = GetTranscriptionJobResponse { "TranscriptionJob" :: Maybe (TranscriptionJob) }
 ```
 
 ##### Instances
@@ -165,7 +165,7 @@ Constructs GetTranscriptionJobResponse from required parameters
 #### `newGetTranscriptionJobResponse'`
 
 ``` purescript
-newGetTranscriptionJobResponse' :: ({ "TranscriptionJob" :: NullOrUndefined (TranscriptionJob) } -> { "TranscriptionJob" :: NullOrUndefined (TranscriptionJob) }) -> GetTranscriptionJobResponse
+newGetTranscriptionJobResponse' :: ({ "TranscriptionJob" :: Maybe (TranscriptionJob) } -> { "TranscriptionJob" :: Maybe (TranscriptionJob) }) -> GetTranscriptionJobResponse
 ```
 
 Constructs GetTranscriptionJobResponse's fields from required parameters
@@ -174,7 +174,7 @@ Constructs GetTranscriptionJobResponse's fields from required parameters
 
 ``` purescript
 newtype InternalFailureException
-  = InternalFailureException { "Message" :: NullOrUndefined (String) }
+  = InternalFailureException { "Message" :: Maybe (String) }
 ```
 
 <p>There was an internal error. Check the error message and try your request again.</p>
@@ -199,7 +199,7 @@ Constructs InternalFailureException from required parameters
 #### `newInternalFailureException'`
 
 ``` purescript
-newInternalFailureException' :: ({ "Message" :: NullOrUndefined (String) } -> { "Message" :: NullOrUndefined (String) }) -> InternalFailureException
+newInternalFailureException' :: ({ "Message" :: Maybe (String) } -> { "Message" :: Maybe (String) }) -> InternalFailureException
 ```
 
 Constructs InternalFailureException's fields from required parameters
@@ -224,7 +224,7 @@ Encode LanguageCode
 
 ``` purescript
 newtype LimitExceededException
-  = LimitExceededException { "Message" :: NullOrUndefined (String) }
+  = LimitExceededException { "Message" :: Maybe (String) }
 ```
 
 <p>Either you have sent too many requests or your input file is longer than 2 hours. Wait before you resend your request, or use a smaller file and resend the request.</p>
@@ -249,7 +249,7 @@ Constructs LimitExceededException from required parameters
 #### `newLimitExceededException'`
 
 ``` purescript
-newLimitExceededException' :: ({ "Message" :: NullOrUndefined (String) } -> { "Message" :: NullOrUndefined (String) }) -> LimitExceededException
+newLimitExceededException' :: ({ "Message" :: Maybe (String) } -> { "Message" :: Maybe (String) }) -> LimitExceededException
 ```
 
 Constructs LimitExceededException's fields from required parameters
@@ -258,7 +258,7 @@ Constructs LimitExceededException's fields from required parameters
 
 ``` purescript
 newtype ListTranscriptionJobsRequest
-  = ListTranscriptionJobsRequest { "Status" :: TranscriptionJobStatus, "NextToken" :: NullOrUndefined (NextToken), "MaxResults" :: NullOrUndefined (MaxResults) }
+  = ListTranscriptionJobsRequest { "Status" :: TranscriptionJobStatus, "NextToken" :: Maybe (NextToken), "MaxResults" :: Maybe (MaxResults) }
 ```
 
 ##### Instances
@@ -281,7 +281,7 @@ Constructs ListTranscriptionJobsRequest from required parameters
 #### `newListTranscriptionJobsRequest'`
 
 ``` purescript
-newListTranscriptionJobsRequest' :: TranscriptionJobStatus -> ({ "Status" :: TranscriptionJobStatus, "NextToken" :: NullOrUndefined (NextToken), "MaxResults" :: NullOrUndefined (MaxResults) } -> { "Status" :: TranscriptionJobStatus, "NextToken" :: NullOrUndefined (NextToken), "MaxResults" :: NullOrUndefined (MaxResults) }) -> ListTranscriptionJobsRequest
+newListTranscriptionJobsRequest' :: TranscriptionJobStatus -> ({ "Status" :: TranscriptionJobStatus, "NextToken" :: Maybe (NextToken), "MaxResults" :: Maybe (MaxResults) } -> { "Status" :: TranscriptionJobStatus, "NextToken" :: Maybe (NextToken), "MaxResults" :: Maybe (MaxResults) }) -> ListTranscriptionJobsRequest
 ```
 
 Constructs ListTranscriptionJobsRequest's fields from required parameters
@@ -290,7 +290,7 @@ Constructs ListTranscriptionJobsRequest's fields from required parameters
 
 ``` purescript
 newtype ListTranscriptionJobsResponse
-  = ListTranscriptionJobsResponse { "Status" :: NullOrUndefined (TranscriptionJobStatus), "NextToken" :: NullOrUndefined (NextToken), "TranscriptionJobSummaries" :: NullOrUndefined (TranscriptionJobSummaries) }
+  = ListTranscriptionJobsResponse { "Status" :: Maybe (TranscriptionJobStatus), "NextToken" :: Maybe (NextToken), "TranscriptionJobSummaries" :: Maybe (TranscriptionJobSummaries) }
 ```
 
 ##### Instances
@@ -313,7 +313,7 @@ Constructs ListTranscriptionJobsResponse from required parameters
 #### `newListTranscriptionJobsResponse'`
 
 ``` purescript
-newListTranscriptionJobsResponse' :: ({ "Status" :: NullOrUndefined (TranscriptionJobStatus), "NextToken" :: NullOrUndefined (NextToken), "TranscriptionJobSummaries" :: NullOrUndefined (TranscriptionJobSummaries) } -> { "Status" :: NullOrUndefined (TranscriptionJobStatus), "NextToken" :: NullOrUndefined (NextToken), "TranscriptionJobSummaries" :: NullOrUndefined (TranscriptionJobSummaries) }) -> ListTranscriptionJobsResponse
+newListTranscriptionJobsResponse' :: ({ "Status" :: Maybe (TranscriptionJobStatus), "NextToken" :: Maybe (NextToken), "TranscriptionJobSummaries" :: Maybe (TranscriptionJobSummaries) } -> { "Status" :: Maybe (TranscriptionJobStatus), "NextToken" :: Maybe (NextToken), "TranscriptionJobSummaries" :: Maybe (TranscriptionJobSummaries) }) -> ListTranscriptionJobsResponse
 ```
 
 Constructs ListTranscriptionJobsResponse's fields from required parameters
@@ -338,7 +338,7 @@ Encode MaxResults
 
 ``` purescript
 newtype Media
-  = Media { "MediaFileUri" :: NullOrUndefined (Uri) }
+  = Media { "MediaFileUri" :: Maybe (Uri) }
 ```
 
 <p>Describes the input media file in a transcription request.</p>
@@ -363,7 +363,7 @@ Constructs Media from required parameters
 #### `newMedia'`
 
 ``` purescript
-newMedia' :: ({ "MediaFileUri" :: NullOrUndefined (Uri) } -> { "MediaFileUri" :: NullOrUndefined (Uri) }) -> Media
+newMedia' :: ({ "MediaFileUri" :: Maybe (Uri) } -> { "MediaFileUri" :: Maybe (Uri) }) -> Media
 ```
 
 Constructs Media's fields from required parameters
@@ -420,7 +420,7 @@ Encode NextToken
 
 ``` purescript
 newtype NotFoundException
-  = NotFoundException { "Message" :: NullOrUndefined (String) }
+  = NotFoundException { "Message" :: Maybe (String) }
 ```
 
 <p>We can't find the requested job. Check the job name and try your request again.</p>
@@ -445,7 +445,7 @@ Constructs NotFoundException from required parameters
 #### `newNotFoundException'`
 
 ``` purescript
-newNotFoundException' :: ({ "Message" :: NullOrUndefined (String) } -> { "Message" :: NullOrUndefined (String) }) -> NotFoundException
+newNotFoundException' :: ({ "Message" :: Maybe (String) } -> { "Message" :: Maybe (String) }) -> NotFoundException
 ```
 
 Constructs NotFoundException's fields from required parameters
@@ -454,7 +454,7 @@ Constructs NotFoundException's fields from required parameters
 
 ``` purescript
 newtype StartTranscriptionJobRequest
-  = StartTranscriptionJobRequest { "TranscriptionJobName" :: TranscriptionJobName, "LanguageCode" :: LanguageCode, "MediaSampleRateHertz" :: NullOrUndefined (MediaSampleRateHertz), "MediaFormat" :: MediaFormat, "Media" :: Media }
+  = StartTranscriptionJobRequest { "TranscriptionJobName" :: TranscriptionJobName, "LanguageCode" :: LanguageCode, "MediaSampleRateHertz" :: Maybe (MediaSampleRateHertz), "MediaFormat" :: MediaFormat, "Media" :: Media }
 ```
 
 ##### Instances
@@ -477,7 +477,7 @@ Constructs StartTranscriptionJobRequest from required parameters
 #### `newStartTranscriptionJobRequest'`
 
 ``` purescript
-newStartTranscriptionJobRequest' :: LanguageCode -> Media -> MediaFormat -> TranscriptionJobName -> ({ "TranscriptionJobName" :: TranscriptionJobName, "LanguageCode" :: LanguageCode, "MediaSampleRateHertz" :: NullOrUndefined (MediaSampleRateHertz), "MediaFormat" :: MediaFormat, "Media" :: Media } -> { "TranscriptionJobName" :: TranscriptionJobName, "LanguageCode" :: LanguageCode, "MediaSampleRateHertz" :: NullOrUndefined (MediaSampleRateHertz), "MediaFormat" :: MediaFormat, "Media" :: Media }) -> StartTranscriptionJobRequest
+newStartTranscriptionJobRequest' :: LanguageCode -> Media -> MediaFormat -> TranscriptionJobName -> ({ "TranscriptionJobName" :: TranscriptionJobName, "LanguageCode" :: LanguageCode, "MediaSampleRateHertz" :: Maybe (MediaSampleRateHertz), "MediaFormat" :: MediaFormat, "Media" :: Media } -> { "TranscriptionJobName" :: TranscriptionJobName, "LanguageCode" :: LanguageCode, "MediaSampleRateHertz" :: Maybe (MediaSampleRateHertz), "MediaFormat" :: MediaFormat, "Media" :: Media }) -> StartTranscriptionJobRequest
 ```
 
 Constructs StartTranscriptionJobRequest's fields from required parameters
@@ -486,7 +486,7 @@ Constructs StartTranscriptionJobRequest's fields from required parameters
 
 ``` purescript
 newtype StartTranscriptionJobResponse
-  = StartTranscriptionJobResponse { "TranscriptionJob" :: NullOrUndefined (TranscriptionJob) }
+  = StartTranscriptionJobResponse { "TranscriptionJob" :: Maybe (TranscriptionJob) }
 ```
 
 ##### Instances
@@ -509,7 +509,7 @@ Constructs StartTranscriptionJobResponse from required parameters
 #### `newStartTranscriptionJobResponse'`
 
 ``` purescript
-newStartTranscriptionJobResponse' :: ({ "TranscriptionJob" :: NullOrUndefined (TranscriptionJob) } -> { "TranscriptionJob" :: NullOrUndefined (TranscriptionJob) }) -> StartTranscriptionJobResponse
+newStartTranscriptionJobResponse' :: ({ "TranscriptionJob" :: Maybe (TranscriptionJob) } -> { "TranscriptionJob" :: Maybe (TranscriptionJob) }) -> StartTranscriptionJobResponse
 ```
 
 Constructs StartTranscriptionJobResponse's fields from required parameters
@@ -518,7 +518,7 @@ Constructs StartTranscriptionJobResponse's fields from required parameters
 
 ``` purescript
 newtype Transcript
-  = Transcript { "TranscriptFileUri" :: NullOrUndefined (Uri) }
+  = Transcript { "TranscriptFileUri" :: Maybe (Uri) }
 ```
 
 <p>Describes the output of a transcription job.</p>
@@ -543,7 +543,7 @@ Constructs Transcript from required parameters
 #### `newTranscript'`
 
 ``` purescript
-newTranscript' :: ({ "TranscriptFileUri" :: NullOrUndefined (Uri) } -> { "TranscriptFileUri" :: NullOrUndefined (Uri) }) -> Transcript
+newTranscript' :: ({ "TranscriptFileUri" :: Maybe (Uri) } -> { "TranscriptFileUri" :: Maybe (Uri) }) -> Transcript
 ```
 
 Constructs Transcript's fields from required parameters
@@ -552,7 +552,7 @@ Constructs Transcript's fields from required parameters
 
 ``` purescript
 newtype TranscriptionJob
-  = TranscriptionJob { "TranscriptionJobName" :: NullOrUndefined (TranscriptionJobName), "TranscriptionJobStatus" :: NullOrUndefined (TranscriptionJobStatus), "LanguageCode" :: NullOrUndefined (LanguageCode), "MediaSampleRateHertz" :: NullOrUndefined (MediaSampleRateHertz), "MediaFormat" :: NullOrUndefined (MediaFormat), "Media" :: NullOrUndefined (Media), "Transcript" :: NullOrUndefined (Transcript), "CreationTime" :: NullOrUndefined (DateTime), "CompletionTime" :: NullOrUndefined (DateTime), "FailureReason" :: NullOrUndefined (FailureReason) }
+  = TranscriptionJob { "TranscriptionJobName" :: Maybe (TranscriptionJobName), "TranscriptionJobStatus" :: Maybe (TranscriptionJobStatus), "LanguageCode" :: Maybe (LanguageCode), "MediaSampleRateHertz" :: Maybe (MediaSampleRateHertz), "MediaFormat" :: Maybe (MediaFormat), "Media" :: Maybe (Media), "Transcript" :: Maybe (Transcript), "CreationTime" :: Maybe (DateTime), "CompletionTime" :: Maybe (DateTime), "FailureReason" :: Maybe (FailureReason) }
 ```
 
 <p>Describes an asynchronous transcription job that was created with the <code>StartTranscriptionJob</code> operation.</p>
@@ -577,7 +577,7 @@ Constructs TranscriptionJob from required parameters
 #### `newTranscriptionJob'`
 
 ``` purescript
-newTranscriptionJob' :: ({ "TranscriptionJobName" :: NullOrUndefined (TranscriptionJobName), "TranscriptionJobStatus" :: NullOrUndefined (TranscriptionJobStatus), "LanguageCode" :: NullOrUndefined (LanguageCode), "MediaSampleRateHertz" :: NullOrUndefined (MediaSampleRateHertz), "MediaFormat" :: NullOrUndefined (MediaFormat), "Media" :: NullOrUndefined (Media), "Transcript" :: NullOrUndefined (Transcript), "CreationTime" :: NullOrUndefined (DateTime), "CompletionTime" :: NullOrUndefined (DateTime), "FailureReason" :: NullOrUndefined (FailureReason) } -> { "TranscriptionJobName" :: NullOrUndefined (TranscriptionJobName), "TranscriptionJobStatus" :: NullOrUndefined (TranscriptionJobStatus), "LanguageCode" :: NullOrUndefined (LanguageCode), "MediaSampleRateHertz" :: NullOrUndefined (MediaSampleRateHertz), "MediaFormat" :: NullOrUndefined (MediaFormat), "Media" :: NullOrUndefined (Media), "Transcript" :: NullOrUndefined (Transcript), "CreationTime" :: NullOrUndefined (DateTime), "CompletionTime" :: NullOrUndefined (DateTime), "FailureReason" :: NullOrUndefined (FailureReason) }) -> TranscriptionJob
+newTranscriptionJob' :: ({ "TranscriptionJobName" :: Maybe (TranscriptionJobName), "TranscriptionJobStatus" :: Maybe (TranscriptionJobStatus), "LanguageCode" :: Maybe (LanguageCode), "MediaSampleRateHertz" :: Maybe (MediaSampleRateHertz), "MediaFormat" :: Maybe (MediaFormat), "Media" :: Maybe (Media), "Transcript" :: Maybe (Transcript), "CreationTime" :: Maybe (DateTime), "CompletionTime" :: Maybe (DateTime), "FailureReason" :: Maybe (FailureReason) } -> { "TranscriptionJobName" :: Maybe (TranscriptionJobName), "TranscriptionJobStatus" :: Maybe (TranscriptionJobStatus), "LanguageCode" :: Maybe (LanguageCode), "MediaSampleRateHertz" :: Maybe (MediaSampleRateHertz), "MediaFormat" :: Maybe (MediaFormat), "Media" :: Maybe (Media), "Transcript" :: Maybe (Transcript), "CreationTime" :: Maybe (DateTime), "CompletionTime" :: Maybe (DateTime), "FailureReason" :: Maybe (FailureReason) }) -> TranscriptionJob
 ```
 
 Constructs TranscriptionJob's fields from required parameters
@@ -634,7 +634,7 @@ Encode TranscriptionJobSummaries
 
 ``` purescript
 newtype TranscriptionJobSummary
-  = TranscriptionJobSummary { "TranscriptionJobName" :: NullOrUndefined (TranscriptionJobName), "CreationTime" :: NullOrUndefined (DateTime), "CompletionTime" :: NullOrUndefined (DateTime), "LanguageCode" :: NullOrUndefined (LanguageCode), "TranscriptionJobStatus" :: NullOrUndefined (TranscriptionJobStatus), "FailureReason" :: NullOrUndefined (FailureReason) }
+  = TranscriptionJobSummary { "TranscriptionJobName" :: Maybe (TranscriptionJobName), "CreationTime" :: Maybe (DateTime), "CompletionTime" :: Maybe (DateTime), "LanguageCode" :: Maybe (LanguageCode), "TranscriptionJobStatus" :: Maybe (TranscriptionJobStatus), "FailureReason" :: Maybe (FailureReason) }
 ```
 
 <p>Provides a summary of information about a transcription job.</p>
@@ -659,7 +659,7 @@ Constructs TranscriptionJobSummary from required parameters
 #### `newTranscriptionJobSummary'`
 
 ``` purescript
-newTranscriptionJobSummary' :: ({ "TranscriptionJobName" :: NullOrUndefined (TranscriptionJobName), "CreationTime" :: NullOrUndefined (DateTime), "CompletionTime" :: NullOrUndefined (DateTime), "LanguageCode" :: NullOrUndefined (LanguageCode), "TranscriptionJobStatus" :: NullOrUndefined (TranscriptionJobStatus), "FailureReason" :: NullOrUndefined (FailureReason) } -> { "TranscriptionJobName" :: NullOrUndefined (TranscriptionJobName), "CreationTime" :: NullOrUndefined (DateTime), "CompletionTime" :: NullOrUndefined (DateTime), "LanguageCode" :: NullOrUndefined (LanguageCode), "TranscriptionJobStatus" :: NullOrUndefined (TranscriptionJobStatus), "FailureReason" :: NullOrUndefined (FailureReason) }) -> TranscriptionJobSummary
+newTranscriptionJobSummary' :: ({ "TranscriptionJobName" :: Maybe (TranscriptionJobName), "CreationTime" :: Maybe (DateTime), "CompletionTime" :: Maybe (DateTime), "LanguageCode" :: Maybe (LanguageCode), "TranscriptionJobStatus" :: Maybe (TranscriptionJobStatus), "FailureReason" :: Maybe (FailureReason) } -> { "TranscriptionJobName" :: Maybe (TranscriptionJobName), "CreationTime" :: Maybe (DateTime), "CompletionTime" :: Maybe (DateTime), "LanguageCode" :: Maybe (LanguageCode), "TranscriptionJobStatus" :: Maybe (TranscriptionJobStatus), "FailureReason" :: Maybe (FailureReason) }) -> TranscriptionJobSummary
 ```
 
 Constructs TranscriptionJobSummary's fields from required parameters
